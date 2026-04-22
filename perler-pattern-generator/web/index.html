@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拼豆图纸生成器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 拼豆图纸生成器</h1>
+            <p class="subtitle">将图片转换为拼豆图纸，支持多种色号标准</p>
+        </header>
+
+        <main>
+            <!-- 上传区域 -->
+            <section class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📷</div>
+                    <p>拖拽图片到此处<br>或点击上传</p>
+                    <input type="file" id="fileInput" accept="image/*" multiple hidden>
+                </div>
+                <div class="preview-container" id="previewContainer" style="display: none;">
+                    <img id="previewImage" alt="预览">
+                    <button class="btn-remove" id="removeImage">✕</button>
+                </div>
+            </section>
+
+            <!-- 设置区域 -->
+            <section class="settings-section">
+                <h2>⚙️ 设置</h2>
+                
+                <div class="setting-group">
+                    <label>拼豆板尺寸</label>
+                    <div class="size-inputs">
+                        <input type="number" id="widthInput" value="80" min="10" max="5000" placeholder="宽">
+                        <span>×</span>
+                        <input type="number" id="heightInput" value="80" min="10" max="5000" placeholder="高">
+                    </div>
+                    <div class="preset-sizes">
+                        <span class="preset-label">快捷设置:</span>
+                        <button class="size-btn" data-size="30x30">30×30</button>
+                        <button class="size-btn" data-size="50x50">50×50</button>
+                        <button class="size-btn active" data-size="80x80">80×80</button>
+                        <button class="size-btn" data-size="100x100">100×100</button>
+                        <button class="size-btn" data-size="150x150">150×150</button>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <label>颜色精简</label>
+                    <select id="colorReduce" class="select-input">
+                        <option value="0">不精简（原始匹配）</option>
+                        <option value="10">轻度精简（合并相近色）</option>
+                        <option value="20" selected>中度精简（推荐）</option>
+                        <option value="30">重度精简（大幅减少颜色）</option>
+                        <option value="50">极限精简（最少颜色）</option>
+                    </select>
+                    <p class="hint">精简颜色可以减少跳色，让图案更整洁</p>
+                </div>
+
+                <div class="setting-group">
+                    <label>色号标准</label>
+                    <select id="standardSelect" class="select-input">
+                        <!-- 动态加载 -->
+                    </select>
+                    <p class="hint" id="standardHint">选择拼豆品牌的色号体系</p>
+                </div>
+
+                <div class="setting-group">
+                    <label>输出精度</label>
+                    <div class="preset-sizes">
+                        <button class="precision-btn" data-size="20">标准</button>
+                        <button class="precision-btn active" data-size="30">高清</button>
+                        <button class="precision-btn" data-size="40">超清</button>
+                    </div>
+                    <p class="hint">单元格越大，图纸越清晰，但文件也越大</p>
+                </div>
+
+                <div class="setting-group">
+                    <label>显示选项</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="showGridLines" checked>
+                            显示网格线
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="showColorCodes" checked>
+                            显示色号
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="useDithering">
+                            颜色抖动(渐变更平滑)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-primary" id="generateBtn">🎨 生成图纸</button>
+                    <button class="btn-secondary" id="resetBtn">🔄 重置</button>
+                </div>
+            </section>
+
+            <!-- 结果区域 -->
+            <section class="result-section" id="resultSection" style="display: none;">
+                <h2>📄 生成结果</h2>
+                
+                <div class="result-preview">
+                    <div class="preview-box">
+                        <h3>原图</h3>
+                        <canvas id="originalCanvas"></canvas>
+                    </div>
+                    <div class="preview-box">
+                        <h3>图纸预览</h3>
+                        <canvas id="patternCanvas"></canvas>
+                    </div>
+                </div>
+
+                <!-- 材料清单 -->
+                <div class="material-list" id="materialList">
+                    <h3>📋 材料清单</h3>
+                    <div class="material-stats">
+                        <span>总珠数: <strong id="totalBeads">0</strong> 颗</span>
+                        <span>颜色数: <strong id="colorCount">0</strong> 种</span>
+                    </div>
+                    <div class="material-items" id="materialItems">
+                        <!-- 动态生成 -->
+                    </div>
+                </div>
+
+                <!-- 导出按钮 -->
+                <div class="export-buttons">
+                    <button class="btn-export" id="downloadPng">📥 下载 PNG</button>
+                    <button class="btn-export" id="copyMaterial">📋 复制清单</button>
+                </div>
+            </section>
+
+            <!-- 加载状态 -->
+            <div class="loading" id="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>正在生成图纸...</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>支持色号标准：MARD | Perler | Hama | Artkal | Nabbi | IKEA</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

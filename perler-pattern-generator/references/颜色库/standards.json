@@ -1,0 +1,64 @@
+{
+  "registry_version": "1.0.0",
+  "last_updated": "2026-04-22",
+  "standards": [
+    {
+      "id": "mard-standard",
+      "name": "MARD 标准",
+      "brand": "MARD",
+      "total_colors": 221,
+      "file": "mard-standard.json",
+      "categories": ["国产品牌", "推荐"],
+      "description": "MARD品牌拼豆标准色卡，共221色"
+    },
+    {
+      "id": "perler-standard",
+      "name": "Perler 中粒",
+      "brand": "Perler",
+      "total_colors": 57,
+      "file": "perler-standard.json",
+      "categories": ["进口品牌", "经典"],
+      "description": "Perler品牌中粒拼豆标准色卡，共57色"
+    },
+    {
+      "id": "hama-standard",
+      "name": "Hama 中粒",
+      "brand": "Hama",
+      "total_colors": 53,
+      "file": "hama-standard.json",
+      "categories": ["进口品牌", "经典"],
+      "description": "Hama品牌中粒拼豆标准色卡，共53色"
+    },
+    {
+      "id": "artkal-s-standard",
+      "name": "Artkal-S 细粒",
+      "brand": "Artkal",
+      "total_colors": 159,
+      "file": "artkal-s-standard.json",
+      "categories": ["进口品牌", "细粒", "推荐"],
+      "description": "Artkal-S品牌细粒拼豆标准色卡，共159色"
+    },
+    {
+      "id": "nabbi-standard",
+      "name": "Nabbi 中粒",
+      "brand": "Nabbi",
+      "total_colors": 30,
+      "file": "nabbi-standard.json",
+      "categories": ["进口品牌", "经典"],
+      "description": "Nabbi品牌中粒拼豆标准色卡，共30色"
+    },
+    {
+      "id": "ikea-standard",
+      "name": "IKEA Pyssla",
+      "brand": "IKEA",
+      "total_colors": 18,
+      "file": "ikea-standard.json",
+      "categories": ["进口品牌", "入门"],
+      "description": "IKEA Pyssla品牌拼豆标准色卡，共18色"
+    }
+  ],
+  "stats": {
+    "total_standards": 6,
+    "total_colors": 538
+  }
+}
