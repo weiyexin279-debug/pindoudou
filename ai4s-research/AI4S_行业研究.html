@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI4S 行业研究 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;900&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: lab-notebook report — narrow reading column, wide data panels, sticky section index */
+:root {
+  --bg: #f7faf9; --surface: #ffffff; --tint: #e8f0ef; --line: #d3dfdd;
+  --ink: #16222e; --muted: #56656f; --petrol: #0e7c75; --petrol-ink: #123642;
+  --amber: #c98a1a; --rust: #a94a33; --slate: #5b7c99;
+  --bar: #0e8c84; --bar-alt: #e0a133;
+  --f-display: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  --f-body: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0f1a20; --surface: #15232b; --tint: #1b2e37; --line: #2a404a;
+  --ink: #e6efee; --muted: #9db0b5; --petrol: #4fc2b8; --petrol-ink: #0b232b;
+  --amber: #f0b54a; --rust: #e07a5f; --slate: #8fb0cc; --bar: #3fb4aa; --bar-alt: #f0b54a; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0f1a20; --surface: #15232b; --tint: #1b2e37; --line: #2a404a;
+  --ink: #e6efee; --muted: #9db0b5; --petrol: #4fc2b8; --petrol-ink: #0b232b;
+  --amber: #f0b54a; --rust: #e07a5f; --slate: #8fb0cc; --bar: #3fb4aa; --bar-alt: #f0b54a; color-scheme: dark }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.75; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-inline: 20px; }
+a { color: var(--petrol); text-underline-offset: 3px; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+h1, h2, h3 { text-wrap: balance; line-height: 1.3; margin: 0; }
+h2 { font-family: var(--f-display); font-weight: 900; font-size: clamp(24px, 3.2vw, 32px); }
+h3 { font-size: 18px; font-weight: 700; }
+p { margin: 0; max-width: 68ch; }
+.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.eyebrow { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--petrol); font-weight: 700; }
+.muted { color: var(--muted); }
+.tag { display: inline-block; font-size: 11px; padding: 1px 7px; border-radius: 999px; background: var(--tint); color: var(--muted); vertical-align: 2px; white-space: nowrap; }
+.tag.est { color: var(--amber); }
+
+/* hero */
+.hero { background: var(--petrol-ink); color: #e9f3f1; padding-block: 56px 48px; }
+.hero .eyebrow { color: #8fc1ba; }
+.hero h1 { font-family: var(--f-display); font-weight: 900; font-size: clamp(34px, 6vw, 60px); margin-top: 10px; color: #ffffff; }
+.hero .lede { margin-top: 18px; font-size: 18px; color: #c3d3d2; max-width: 60ch; }
+.hero .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 28px; margin-top: 40px; }
+.hero .stat b { display: block; font-family: var(--f-mono); font-size: clamp(28px, 4vw, 38px); color: #f0b54a; font-weight: 500; line-height: 1.2; }
+.hero .stat span { font-size: 14px; color: #c3d3d2; }
+.hero .meta { margin-top: 36px; font-size: 13px; color: #8fc1ba; }
+
+/* nav */
+nav.toc { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
+nav.toc .wrap { display: flex; gap: 4px; overflow-x: auto; padding-block: 10px; scrollbar-width: none; }
+nav.toc a { flex: none; font-size: 14px; color: var(--muted); text-decoration: none; padding: 4px 10px; border-radius: 6px; }
+nav.toc a:hover { background: var(--tint); color: var(--ink); }
+
+section { padding-block: 56px 8px; scroll-margin-top: 56px; }
+section > .wrap { display: grid; gap: 22px; }
+.head { display: grid; gap: 8px; }
+
+/* blocks */
+.grid { display: grid; gap: 16px; }
+.g2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.g3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.g4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px; min-width: 0; }
+.panel.dark { background: var(--petrol-ink); border-color: var(--petrol-ink); color: #e9f3f1; }
+.panel.dark .muted { color: #a9c3c0; }
+.panel h3 + p, .panel h3 + ul { margin-top: 8px; }
+.panel .big { font-family: var(--f-mono); font-size: 34px; line-height: 1.2; color: var(--petrol); font-weight: 500; }
+.panel.dark .big { color: #f0b54a; }
+ul { margin: 0; padding-left: 1.2em; }
+li + li { margin-top: 4px; }
+
+ol.findings { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; counter-reset: f; }
+ol.findings li { counter-increment: f; display: grid; grid-template-columns: 44px 1fr; gap: 14px; margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
+ol.findings li::before { content: counter(f); font-family: var(--f-display); font-weight: 900; font-size: 28px; color: var(--petrol); line-height: 1.1; }
+ol.findings b { display: block; font-size: 17px; }
+
+/* tables */
+.tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 14px; line-height: 1.55; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { background: var(--tint); font-weight: 700; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td.n { font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+td:first-child { font-weight: 500; }
+
+/* bar charts */
+.chart { display: grid; gap: 8px; }
+.chart .row { display: grid; grid-template-columns: minmax(96px, 150px) 1fr; gap: 12px; align-items: center; font-size: 14px; }
+.chart .track { position: relative; height: 24px; }
+.chart .fill { height: 100%; background: var(--bar); border-radius: 0 4px 4px 0; min-width: 2px; }
+.chart .fill.alt { background: var(--bar-alt); }
+.chart .fill.ghost { background: transparent; border: 1.5px dashed var(--bar); }
+.chart .val { position: absolute; top: 50%; transform: translateY(-50%); font-family: var(--f-mono); font-size: 13px; padding-left: 6px; white-space: nowrap; }
+.cols { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; align-items: end; height: 240px; padding-top: 22px; border-bottom: 1px solid var(--line); }
+.cols .c { position: relative; background: var(--bar); border-radius: 4px 4px 0 0; }
+.cols .c.alt { background: var(--bar-alt); }
+.cols .c.e { background: repeating-linear-gradient(135deg, var(--bar) 0 6px, color-mix(in srgb, var(--bar) 70%, var(--surface)) 6px 10px); }
+.cols .c span { position: absolute; top: -21px; left: 0; right: 0; text-align: center; font-family: var(--f-mono); font-size: 12px; }
+.cols-x { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; font-size: 12px; color: var(--muted); text-align: center; font-family: var(--f-mono); margin-top: 6px; }
+.legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--muted); }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; background: var(--bar); }
+.legend i.alt { background: var(--bar-alt); }
+.legend i.e { background: repeating-linear-gradient(135deg, var(--bar) 0 3px, var(--surface) 3px 5px); }
+
+/* timeline */
+.timeline { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); display: grid; gap: 14px; }
+.timeline li { position: relative; margin: 0; padding-left: 22px; display: grid; grid-template-columns: 84px 1fr; gap: 12px; }
+.timeline li::before { content: ""; position: absolute; left: -7px; top: 8px; width: 12px; height: 12px; border-radius: 50%; background: var(--petrol); border: 2px solid var(--bg); }
+.timeline li.key::before { background: var(--amber); }
+.timeline time { font-family: var(--f-mono); font-size: 13px; color: var(--petrol); padding-top: 2px; }
+.timeline li.key b { color: var(--amber); }
+
+.era { display: grid; gap: 6px; }
+.era .eyebrow { font-family: var(--f-mono); letter-spacing: .04em; }
+
+.sev { display: inline-block; min-width: 42px; text-align: center; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 1px 8px; color: #fff; }
+.sev.h { background: var(--rust); } .sev.mh { background: var(--amber); color: #1c1407; } .sev.m { background: var(--slate); }
+
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; }
+details + details { margin-top: 10px; }
+summary { cursor: pointer; font-weight: 700; }
+details ul { margin-top: 10px; font-size: 14px; word-break: break-all; }
+
+footer { padding-block: 48px 64px; color: var(--muted); font-size: 13px; }
+@media (max-width: 560px) {
+  .timeline li { grid-template-columns: 1fr; gap: 0; }
+  .cols { gap: 4px; } .cols-x { gap: 4px; font-size: 10px; } .cols .c span { font-size: 10px; }
+}
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+</head>
+<body style="margin:0">
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">行业研究 · 2026 年 10 月</div>
+    <h1>AI for Science：从诺奖到产业</h1>
+    <p class="lede">AI 驱动的科学研究已经成为大国战略和资本主线，但真金白银的收入仍处早期。2026–2028 年的临床与实验验证，将决定这个行业的估值体系能否成立。</p>
+    <div class="stats">
+      <div class="stat"><b>47–86 亿</b><span>美元 · 2025 年窄口径 AI 科学发现市场</span></div>
+      <div class="stat"><b>~700 亿</b><span>美元 · 2025 年 HPC+AI for science 全栈支出</span></div>
+      <div class="stat"><b>21 亿</b><span>美元 · Isomorphic Labs B 轮（2026-05）</span></div>
+      <div class="stat"><b>4.2%</b><span>礼来–英矽交易中首付占总额比例</span></div>
+    </div>
+    <p class="meta">研究日期 2026-10-10 · 资料来源为公开信息（优先 2024–2026） · 货币未注明者为美元 · 标 <span class="tag est" style="background:#ffffff1a">估计</span> 的数字为本报告推算</p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="章节">
+  <div class="wrap">
+    <a href="#summary">核心结论</a><a href="#scope">行业范畴</a><a href="#market">市场规模</a><a href="#tech">技术演进</a><a href="#chain">产业链</a><a href="#players">主要玩家</a><a href="#capital">投融资</a><a href="#policy">政策</a><a href="#business">商业模式</a><a href="#risk">风险</a><a href="#outlook">展望与建议</a><a href="#sources">来源</a>
+  </div>
+</nav>
+
+<main>
+<section id="summary"><div class="wrap">
+  <div class="head"><div class="eyebrow">执行摘要</div><h2>五个核心结论</h2></div>
+  <ol class="findings">
+    <li><div><b>市场没有统一口径，数字相差一到两个数量级</b><span class="muted">窄口径的"AI 科学发现软件/平台"市场 2025 年约 47–86 亿美元，2030 年约 110–200 亿美元 <span class="tag est">估计</span>。把算力也算进来的 HPC+AI for science 支出 2025 年约 700 亿美元，2030 年接近 1,400 亿美元（Hyperion Research，2026）。</span></div></li>
+    <li><div><b>资本从"AI 制药"扩散到"AI 科学家 + 自主实验室"</b><span class="muted">Isomorphic Labs 2026 年 5 月完成 21 亿美元 B 轮，并被报道以不低于 400 亿美元估值洽谈新一轮。Lila Sciences、Periodic Labs、Chai Discovery 等"科学基础模型 + 湿实验闭环"公司成为新一批独角兽。</span></div></li>
+    <li><div><b>四大经济体都已出台国家级计划</b><span class="muted">美国 Genesis Mission（EO 14363），中国"人工智能+"行动把"人工智能+科学技术"列为六大行动之首（国发〔2025〕11 号），欧盟 AI in Science 战略与 RAISE，英国 AI for Science Strategy。</span></div></li>
+    <li><div><b>商业化以 BD 里程碑为主，现金收入很薄</b><span class="muted">礼来–英矽交易总额最高 27.5 亿美元，首付仅 1.15 亿。英矽 2025 年收入约 5,620 万美元，Recursion 7,470 万美元，Schrödinger 2.56 亿美元。首个完全由 AI 发现并获批上市的新药还没有出现，rentosertib 已于 2026 年 9 月进入 III 期。</span></div></li>
+    <li><div><b>中国在开源科学大模型、AI 气象和制药出海 BD 上领先一步</b><span class="muted">书生 Intern-S1/S2、风清/风雷/风顺、盘古气象；英矽港股 IPO 募资 22.77 亿港元，深势科技 C 轮超 8 亿元。但专项市场统计薄弱，一级市场单笔规模与美国差距明显。</span></div></li>
+  </ol>
+</div></section>
+
+<section id="scope"><div class="wrap">
+  <div class="head"><div class="eyebrow">01 · 行业定义</div><h2>AI4S 覆盖八个方向</h2>
+  <p class="muted">AI for Science（科学智能，科技部称"人工智能驱动的科学研究"）是把机器学习、生成式模型、大模型智能体和机器人自动化，用于假设生成、模拟计算、实验设计与执行、数据分析和知识发现的新科研范式。</p></div>
+  <div class="tbl"><table>
+    <thead><tr><th>方向</th><th>典型问题</th><th>代表模型/系统</th><th>主要商业化场景</th></tr></thead>
+    <tbody>
+      <tr><td>药物发现 / 蛋白质设计</td><td>结构预测、分子生成、ADMET、抗体设计</td><td>AlphaFold 2/3、RoseTTAFold、Chai-2、IsoDDE、Pharma.AI、xTrimo</td><td>制药研发合作、自研管线、SaaS</td></tr>
+      <tr><td>材料与化学</td><td>晶体发现、性质预测、逆向设计、合成路线</td><td>GNoME、MatterGen、DPA 大原子模型、Uni-Mol</td><td>电池、半导体、催化、化工材料</td></tr>
+      <tr><td>气象气候与地球科学</td><td>中期预报、集合预报、次季节预测</td><td>GraphCast、GenCast、WeatherNext 2、AIFS、Aurora、盘古、风乌、伏羲、风清/风雷/风顺</td><td>国家气象业务、能源调度、保险、农业</td></tr>
+      <tr><td>物理 / 核聚变 / 高能物理</td><td>等离子体控制、粒子事件重建、量子多体</td><td>DeepMind 托卡马克控制、TORAX</td><td>能源、国家实验室</td></tr>
+      <tr><td>生命科学 / 基因组</td><td>DNA/RNA/蛋白质语言模型、虚拟细胞</td><td>Evo / Evo 2、AlphaGenome、ESM3</td><td>合成生物、基因治疗、育种</td></tr>
+      <tr><td>数学与 AI Scientist</td><td>定理证明、算法发现、假设—实验闭环</td><td>AlphaEvolve、AI co-scientist、Sakana AI Scientist、Kosmos、OpenAI Prism</td><td>企业研发助理、科研 SaaS</td></tr>
+      <tr><td>自主实验室</td><td>机器人合成与表征、闭环优化</td><td>Berkeley A-Lab、Lila、Periodic Labs、深势 Uni-Lab、晶泰机器人实验室</td><td>材料/化学/生物研发外包</td></tr>
+      <tr><td>科学计算基础设施</td><td>HPC+AI 融合、科学数据库、科研云</td><td>NVIDIA BioNeMo/Earth-2、Microsoft Discovery、玻尔 Bohrium</td><td>算力、云、平台订阅</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section id="market"><div class="wrap">
+  <div class="head"><div class="eyebrow">02 · 市场规模</div><h2>口径差异是读懂这个市场的第一步</h2>
+  <p class="muted">Precedence、Market.us、Technavio 统计的是 AI 软件平台与服务层；Hyperion 统计的是科研机构和企业在 HPC 与 AI 基础设施上的全部支出（含硬件）。两者不可比，也不能相加。</p></div>
+  <div class="grid g2">
+    <div class="panel">
+      <h3>窄口径：2025 年市场规模（亿美元）</h3>
+      <div class="chart" style="margin-top:16px">
+        <div class="row"><span>Market.us</span><div class="track"><div class="fill" style="width:47.2%"></div><span class="val" style="left:47.2%">47.2</span></div></div>
+        <div class="row"><span>Precedence</span><div class="track"><div class="fill" style="width:48%"></div><span class="val" style="left:48%">48.0</span></div></div>
+        <div class="row"><span>Marketintelo</span><div class="track"><div class="fill" style="width:86%"></div><span class="val" style="left:86%">86</span></div></div>
+      </div>
+      <p class="muted" style="margin-top:14px;font-size:13px">刻度 0–100 亿美元。Precedence 称软件平台约占 44%，北美约占 40%。</p>
+    </div>
+    <div class="panel dark">
+      <div class="eyebrow" style="color:#8fc1ba">广义口径 · Hyperion Research 2026</div>
+      <div class="big" style="margin-top:8px">~700 亿美元</div>
+      <p class="muted">2025 年 HPC+AI for science 全栈支出（服务器、存储、软件、服务、云），其中云约 124 亿美元。</p>
+      <div class="big" style="margin-top:16px;font-size:26px">2030 年 → ~1,400 亿</div>
+      <p class="muted">年复合增速约 15%。</p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>全球 AI4S（窄口径）市场规模，2023–2030（亿美元）</h3>
+    <div class="cols" role="img" aria-label="2023 年约 33 亿，2024 年约 40 亿，2025 年 48 亿，2026 年 58.5 亿，2027 年约 71 亿，2028 年约 87 亿，2029 年约 106 亿，2030 年约 129 亿美元">
+      <div class="c e" style="height:23%"><span>33</span></div>
+      <div class="c e" style="height:28%"><span>40</span></div>
+      <div class="c alt" style="height:33%"><span>48</span></div>
+      <div class="c alt" style="height:40%"><span>58.5</span></div>
+      <div class="c e" style="height:49%"><span>71</span></div>
+      <div class="c e" style="height:60%"><span>87</span></div>
+      <div class="c e" style="height:73%"><span>106</span></div>
+      <div class="c e" style="height:89%"><span>129</span></div>
+    </div>
+    <div class="cols-x"><span>2023</span><span>2024</span><span>2025</span><span>2026</span><span>2027</span><span>2028</span><span>2029</span><span>2030</span></div>
+    <div class="legend" style="margin-top:12px"><span><i class="alt"></i>Precedence 原始数据</span><span><i class="e"></i>按 21.9% CAGR 推算（估计）</span><span>区间（含 Marketintelo 上沿）：2030 年 115–215 亿</span></div>
+  </div>
+
+  <div class="tbl"><table>
+    <thead><tr><th>机构（年份）</th><th>口径</th><th>基年</th><th>预测</th><th>CAGR</th></tr></thead>
+    <tbody>
+      <tr><td>Precedence Research（2025/26）</td><td>AI for Scientific Discovery</td><td class="n">2025：48.0 亿</td><td class="n">2035：347.8 亿</td><td class="n">21.9%</td></tr>
+      <tr><td>Market.us</td><td>AI for Scientific Discovery</td><td class="n">2025：47.2 亿</td><td class="n">2035：342.0 亿</td><td class="n">~22%</td></tr>
+      <tr><td>Technavio</td><td>AI for Scientific Discovery</td><td class="n">—</td><td class="n">2024–29 增量 +44.1 亿</td><td class="n">19.0%</td></tr>
+      <tr><td>Marketintelo</td><td>AI in Scientific Research</td><td class="n">2025：86 亿</td><td class="n">2034：473 亿</td><td class="n">~21%</td></tr>
+      <tr><td>Hyperion Research（2026）</td><td>HPC+AI for science 全栈支出</td><td class="n">2025：~700 亿</td><td class="n">2030：~1,400 亿</td><td class="n">~15%</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>细分市场</h3>
+  <div class="grid g3">
+    <div class="panel"><div class="eyebrow">AI 药物发现 · 全球</div><div class="big">85–130 亿</div><p class="muted">美元，2030 年主流机构区间。2025 年约 20–70 亿美元，CAGR 10–31%。差异来自是否计入药企内部 AI 支出、CRO 服务和里程碑收入（Arizton、ResearchAndMarkets、MarketsandMarkets、Precedence）。麦肯锡估计生成式 AI 每年可为制药行业创造 600–1,100 亿美元经济价值。</p></div>
+    <div class="panel"><div class="eyebrow">生成式 AI 材料 · 全球</div><div class="big">70 亿</div><p class="muted">美元，2030 年（ResearchAndMarkets，2026-07）。2025 年 16.8 亿，2026 年 22.4 亿。窄口径的材料信息学 2030 年仅 4.1 亿美元（MarketsandMarkets）。TBRC 的数字自相矛盾，未采用。</p></div>
+    <div class="panel"><div class="eyebrow">中国 AI4S</div><div class="big">200–400 亿元</div><p class="muted">2030 年区间 <span class="tag est">估计</span>。唯一可查的专项口径是共研产业研究院 2023/24 年"AI4S 应用市场 47 亿元"。头豹：中国 AI 制药 2024 年 7.3 亿元 → 2028 年 58.6 亿元，CAGR 68.5%。</p></div>
+  </div>
+  <p class="muted" style="font-size:14px">AI 气象暂无可信的专项市场规模数据，本报告不给数字。其价值主要体现在国家气象业务、云厂商数据服务和能源、保险下游。</p>
+</div></section>
+
+<section id="tech"><div class="wrap">
+  <div class="head"><div class="eyebrow">03 · 技术演进</div><h2>从专用模型走向"假设—实验"闭环</h2></div>
+  <div class="grid g3">
+    <div class="panel era"><div class="eyebrow">1.0 · 2018–2022</div><h3>专用模型解决单点问题</h3><p class="muted">AlphaFold 2 达到实验精度，DeePMD 分子动力学势函数。</p></div>
+    <div class="panel era"><div class="eyebrow">2.0 · 2023–2025</div><h3>科学基础模型与业务化</h3><p class="muted">AlphaFold 3、Evo 2、GNoME、Intern-S1、xTrimo；AI 气象预报进入业务运行。</p></div>
+    <div class="panel era dark"><div class="eyebrow" style="color:#f0b54a">3.0 · 2025–</div><h3>智能体 + 自主实验室</h3><p class="muted">AI co-scientist、Kosmos、Lila、Periodic、DeepMind 英国自动化实验室。State of AI 评估认为，还没有系统独立完成从选题到验证的完整闭环。</p></div>
+  </div>
+  <ol class="timeline">
+    <li><time>2020-11</time><div><b>AlphaFold 2 在 CASP14 夺冠</b><span class="muted"> · 蛋白质结构预测达到实验精度（Nature 2021）</span></div></li>
+    <li><time>2023-03</time><div><b>科技部、自然科学基金委启动"人工智能驱动的科学研究"专项部署</b><span class="muted"> · 中国国家层面起点</span></div></li>
+    <li><time>2023-07</time><div><b>华为盘古气象登上 Nature</b><span class="muted"> · 首个精度超过传统数值预报的 AI 模型</span></div></li>
+    <li><time>2023-11</time><div><b>GNoME 发现 220 万种新晶体（约 38 万种稳定）；GraphCast 登上 Science</b></div></li>
+    <li><time>2024-05</time><div><b>AlphaFold 3 发布</b><span class="muted"> · 预测蛋白与 DNA/RNA/配体复合物</span></div></li>
+    <li class="key"><time>2024-10</time><div><b>诺贝尔化学奖授予 David Baker、Demis Hassabis 与 John Jumper</b><span class="muted"> · AI4S 获得科学界最高认可</span></div></li>
+    <li><time>2024-12</time><div><b>GenCast 集合预报优于 ECMWF ENS；Evo 基因组语言模型</b></div></li>
+    <li><time>2025-02</time><div><b>ECMWF AIFS 投入业务运行；Evo 2；Google AI co-scientist</b></div></li>
+    <li><time>2025-05</time><div><b>AlphaEvolve 将 4×4 复数矩阵乘法降至 48 次标量乘法</b><span class="muted"> · 56 年来首次改进 Strassen 算法</span></div></li>
+    <li><time>2025-06</time><div><b>AlphaGenome；rentosertib IIa 期结果发表于 Nature Medicine</b></div></li>
+    <li><time>2025-07</time><div><b>上海 AI 实验室开源书生 Intern-S1；北京发布全国首个科学智能专项地方政策</b></div></li>
+    <li><time>2025-09</time><div><b>Periodic Labs 以 3 亿美元种子轮亮相</b></div></li>
+    <li class="key"><time>2025-11</time><div><b>美国 Genesis Mission（EO 14363）；英国 AI for Science Strategy；WeatherNext 2</b></div></li>
+    <li><time>2026-01</time><div><b>NVIDIA–礼来最高 10 亿美元联合实验室；OpenAI Prism</b></div></li>
+    <li><time>2026-02</time><div><b>Generate Biomedicines 纳斯达克 IPO，募资 4 亿美元</b></div></li>
+    <li><time>2026-05</time><div><b>Isomorphic Labs 21 亿美元 B 轮；AIFS v2 上线；Intern-S2-Preview 开源</b></div></li>
+    <li class="key"><time>2026-09</time><div><b>rentosertib III 期首例患者给药</b><span class="muted"> · 行业最关键的临床验证节点</span></div></li>
+  </ol>
+</div></section>
+
+<section id="chain"><div class="wrap">
+  <div class="head"><div class="eyebrow">04 · 产业链</div><h2>价值集中在算力与制药两端</h2></div>
+  <div class="grid g3">
+    <div class="panel"><div class="eyebrow">上游 · 基础资源</div><ul style="margin-top:10px">
+      <li>算力：NVIDIA/AMD、华为昇腾、国家超算、DOE 17 个国家实验室、公有云</li>
+      <li>数据：PDB、UniProt、Materials Project、ERA5、ChEMBL、专有湿实验数据</li>
+      <li>瓶颈：高质量实验数据稀缺；中国受出口管制影响</li></ul>
+      <p style="margin-top:12px"><b class="num" style="color:var(--petrol)">124 亿美元</b> <span class="muted">2025 年科研云支出（Hyperion）</span></p></div>
+    <div class="panel"><div class="eyebrow">中游 · 模型与平台</div><ul style="margin-top:10px">
+      <li>通用大模型的科学化：OpenAI Prism、Google co-scientist、Claude for Life Sciences</li>
+      <li>科学基础模型：AlphaFold 3、Evo 2、Intern-S1、xTrimo、DPA、盘古</li>
+      <li>平台/SaaS：Schrödinger、BioNeMo、玻尔、Microsoft Discovery</li>
+      <li>自主实验室与 AI 原生 Biotech：Lila、Periodic、Isomorphic、英矽、Recursion</li></ul>
+      <p style="margin-top:12px"><b class="num" style="color:var(--petrol)">2.0 亿美元</b> <span class="muted">Schrödinger 2025 年软件收入</span></p></div>
+    <div class="panel"><div class="eyebrow">下游 · 应用行业</div><ul style="margin-top:10px">
+      <li>制药/生物：礼来、诺华、赛诺菲、强生、辉瑞、恒瑞、施维雅</li>
+      <li>材料/化工/电池/半导体；核聚变、电网与新能源</li>
+      <li>气象：ECMWF、中国气象局；保险、农业</li></ul>
+      <p style="margin-top:12px"><b class="num" style="color:var(--petrol)">27.5 亿美元</b> <span class="muted">礼来–英矽交易总额上限</span></p></div>
+  </div>
+</div></section>
+
+<section id="players"><div class="wrap">
+  <div class="head"><div class="eyebrow">05 · 主要玩家</div><h2>巨头研究院、AI 原生公司与国家队</h2><p class="muted">带 * 的估值为媒体报道的洽谈信息，尚未确认。</p></div>
+  <h3>国际</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>公司/机构</th><th>类型</th><th>代表产品/成果</th><th>融资/估值/收入</th></tr></thead>
+    <tbody>
+      <tr><td>Google DeepMind</td><td>巨头研究部门</td><td>AlphaFold 2/3、GNoME、GraphCast/GenCast、AlphaGenome、AlphaEvolve、AI co-scientist</td><td>2026 年在英国建首个自动化材料实验室</td></tr>
+      <tr><td>Isomorphic Labs</td><td>AI 制药</td><td>IsoDDE；与礼来、诺华、强生合作</td><td>A 轮 6 亿美元（2025-03）；B 轮 21 亿美元（2026-05）；估值 ≥400 亿*</td></tr>
+      <tr><td>Microsoft Research</td><td>巨头研究部门</td><td>MatterGen、MatterSim、Aurora、Microsoft Discovery</td><td>—</td></tr>
+      <tr><td>NVIDIA</td><td>算力 + 平台</td><td>BioNeMo、Earth-2；NVentures 投资 Lila、Periodic</td><td>与礼来共建最高 10 亿美元实验室</td></tr>
+      <tr><td>OpenAI</td><td>通用大模型</td><td>OpenAI for Science、Prism</td><td>—</td></tr>
+      <tr><td>Recursion（RXRX）</td><td>AI 原生 Biotech</td><td>Recursion OS；合并 Exscientia</td><td>2025 年收入 7,470 万美元；现金 7.54 亿美元；裁员约 20%</td></tr>
+      <tr><td>Schrödinger（SDGR）</td><td>计算 + AI 软件</td><td>分子模拟平台</td><td>2025 年收入 2.56 亿美元（+23%），净亏损 1.03 亿</td></tr>
+      <tr><td>Xaira Therapeutics</td><td>AI 原生 Biotech</td><td>蛋白设计（Baker 团队背景）</td><td>2024-04 以 10 亿美元启动</td></tr>
+      <tr><td>Chai Discovery</td><td>分子设计基础模型</td><td>Chai-1 / Chai-2</td><td>C 轮 4 亿美元（2026-07），估值 38 亿</td></tr>
+      <tr><td>Generate Biomedicines</td><td>生成式蛋白设计</td><td>GB-0895（哮喘，III 期）</td><td>2026-02 IPO 募资 4 亿美元</td></tr>
+      <tr><td>Lila Sciences</td><td>自主实验室</td><td>AI Science Factories</td><td>A 轮 3.5 亿美元，估值 >13 亿；洽谈约 85 亿投前估值*</td></tr>
+      <tr><td>Periodic Labs</td><td>AI 科学家 + 材料实验室</td><td>高温超导、芯片散热材料</td><td>种子轮 3 亿美元；估值约 70–75 亿*</td></tr>
+      <tr><td>FutureHouse / Edison</td><td>非营利 + 商业分拆</td><td>Robin、Kosmos</td><td>Edison 种子轮 7,000 万美元</td></tr>
+    </tbody>
+  </table></div>
+  <h3>中国</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>公司/机构</th><th>定位</th><th>代表产品/成果</th><th>融资/上市/经营</th></tr></thead>
+    <tbody>
+      <tr><td>晶泰科技（2228.HK）</td><td>AI + 机器人药物/材料发现</td><td>量子物理 + AI + 自动化实验室</td><td>2025 年收入约 8.03 亿元（+201%），首次全年盈利 <span class="tag">媒体转述</span>；DoveTree 合作约 59.9 亿美元</td></tr>
+      <tr><td>英矽智能（3696.HK）</td><td>AI 制药</td><td>Pharma.AI、Chemistry42；rentosertib III 期</td><td>港股 IPO 22.77 亿港元；施维雅 8.88 亿、礼来 27.5 亿美元合作</td></tr>
+      <tr><td>深势科技</td><td>AI4S 平台</td><td>玻尔 Bohrium、Hermite、Piloteye、Uni-Lab</td><td>C 轮超 8 亿元（2025-12），投后估值超 60 亿元</td></tr>
+      <tr><td>百图生科</td><td>生命科学基础模型</td><td>xTrimo V3（2,100 亿参数）</td><td>赛诺菲合作超 10 亿美元；推进港股 IPO</td></tr>
+      <tr><td>上海人工智能实验室</td><td>国家级研发机构</td><td>书生 Intern-S1 / S1-Pro / S2-Preview；风乌</td><td>—</td></tr>
+      <tr><td>北京科学智能研究院</td><td>新型研发机构</td><td>DPA 大原子模型（90+ 元素）、玻尔科研空间站</td><td>—</td></tr>
+      <tr><td>华为</td><td>科技巨头</td><td>盘古气象、盘古药物分子模型</td><td>—</td></tr>
+      <tr><td>中国气象局 / 复旦</td><td>国家业务 / 高校</td><td>风清、风雷、风顺、风源；伏羲</td><td>—</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section id="capital"><div class="wrap">
+  <div class="head"><div class="eyebrow">06 · 投融资</div><h2>单笔融资跃升到十亿美元级</h2></div>
+  <div class="grid g2">
+    <div class="panel">
+      <h3>代表性单笔融资（亿美元）</h3>
+      <div class="chart" style="margin-top:16px">
+        <div class="row"><span>Isomorphic B '26</span><div class="track"><div class="fill" style="width:84%"></div><span class="val" style="left:84%">21.0</span></div></div>
+        <div class="row"><span>Lila B '26（洽谈）</span><div class="track"><div class="fill ghost" style="width:80%"></div><span class="val" style="left:80%">~20*</span></div></div>
+        <div class="row"><span>Xaira 启动 '24</span><div class="track"><div class="fill" style="width:40%"></div><span class="val" style="left:40%">10.0</span></div></div>
+        <div class="row"><span>Isomorphic A '25</span><div class="track"><div class="fill" style="width:24%"></div><span class="val" style="left:24%">6.0</span></div></div>
+        <div class="row"><span>Generate IPO '26</span><div class="track"><div class="fill" style="width:16%"></div><span class="val" style="left:16%">4.0</span></div></div>
+        <div class="row"><span>Chai C '26</span><div class="track"><div class="fill" style="width:16%"></div><span class="val" style="left:16%">4.0</span></div></div>
+        <div class="row"><span>Lila A '25</span><div class="track"><div class="fill" style="width:14%"></div><span class="val" style="left:14%">3.5</span></div></div>
+        <div class="row"><span>Periodic 种子 '25</span><div class="track"><div class="fill" style="width:12%"></div><span class="val" style="left:12%">3.0</span></div></div>
+        <div class="row"><span>英矽 IPO '25</span><div class="track"><div class="fill alt" style="width:11.6%"></div><span class="val" style="left:11.6%">~2.9</span></div></div>
+        <div class="row"><span>Chai B '25</span><div class="track"><div class="fill" style="width:5.2%"></div><span class="val" style="left:5.2%">1.3</span></div></div>
+        <div class="row"><span>深势 C '25</span><div class="track"><div class="fill alt" style="width:4.6%"></div><span class="val" style="left:4.6%">1.14</span></div></div>
+      </div>
+      <div class="legend" style="margin-top:12px"><span><i></i>海外</span><span><i class="alt"></i>中国</span><span>虚线 = 洽谈中，未确认 · 刻度 0–25</span></div>
+    </div>
+    <div class="grid" style="align-content:start">
+      <div class="panel">
+        <h3>AI 驱动药物发现风险投资</h3>
+        <div class="grid g2" style="margin-top:10px;gap:12px">
+          <div><div class="big">89 亿</div><p class="muted">2024 年 · 264 笔</p></div>
+          <div><div class="big">110 亿</div><p class="muted">2025 年 · 348 笔</p></div>
+        </div>
+        <p class="muted" style="font-size:13px;margin-top:8px">IntuitionLabs 二手汇编，未与 PitchBook 原始数据核对。2024–25 年 AI/ML 药物发现合作与并购总价值合计超过 550 亿美元。</p>
+      </div>
+      <div class="panel dark">
+        <h3>BD 头条金额不等于现金</h3>
+        <p class="muted" style="margin-top:6px">BD 头条金额九成以上是或有里程碑，首付通常只占 2–5%。</p>
+      </div>
+    </div>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>时间</th><th>交易</th><th>首付</th><th>总额（含里程碑）</th></tr></thead>
+    <tbody>
+      <tr><td class="n">2024-01</td><td>Isomorphic–礼来、诺华</td><td class="n">4,500 万 / 3,750 万</td><td class="n">合计近 30 亿</td></tr>
+      <tr><td class="n">2024-11</td><td>Recursion 合并 Exscientia（全股票）</td><td class="n">—</td><td class="n">约 6.88 亿</td></tr>
+      <tr><td class="n">2025-08</td><td>晶泰科技–DoveTree</td><td class="n">5,100 万</td><td class="n">约 59.9 亿</td></tr>
+      <tr><td class="n">2026-01</td><td>英矽智能–施维雅</td><td class="n">—</td><td class="n">8.88 亿</td></tr>
+      <tr><td class="n">2026-01</td><td>NVIDIA–礼来联合创新实验室</td><td class="n">—</td><td class="n">5 年最高 10 亿投入</td></tr>
+      <tr><td class="n">2026-03</td><td>英矽智能–礼来管线授权</td><td class="n">1.15 亿</td><td class="n">最高 27.5 亿 + 特许权使用费</td></tr>
+      <tr><td class="n">2025 前后</td><td>百图生科–赛诺菲</td><td class="n">—</td><td class="n">潜在价值超 10 亿</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section id="policy"><div class="wrap">
+  <div class="head"><div class="eyebrow">07 · 政策</div><h2>AI4S 成为大国科技竞争主线</h2></div>
+  <div class="grid g2">
+    <div class="panel"><div class="eyebrow">中国</div><h3>"人工智能+科学技术"居六大行动之首</h3><ul style="margin-top:8px">
+      <li>2023-03 科技部、自然科学基金委启动"人工智能驱动的科学研究"专项部署</li>
+      <li>2025-07 北京 2025–2027 行动计划：全国首个科学智能专项地方政策，2027 年前建设不少于 10 个高质量科学数据库</li>
+      <li>2025-08 国发〔2025〕11 号：科学大模型、科研平台智能化、开放共享的科学数据集</li>
+      <li>2026-06 北京 2026–2028 实施方案：5 个方向 18 项任务</li>
+      <li>连云港、包头等地方方案跟进</li></ul></div>
+    <div class="panel"><div class="eyebrow">美国</div><h3>Genesis Mission（EO 14363，2025-11-24）</h3><ul style="margin-top:8px">
+      <li>DOE 牵头、OSTP 统筹，建设 American Science and Security Platform</li>
+      <li>2025-12 首批 3.2 亿美元以上投入，与 24 家机构签 MOU</li>
+      <li>2026-03 发布 2.93 亿美元 RFA；2026-06 美日 10 亿美元伙伴关系</li>
+      <li>2026-07 Genesis Consortium 伙伴承诺超 8 亿美元</li></ul></div>
+    <div class="panel"><div class="eyebrow">欧盟</div><h3>AI in Science 战略与 RAISE（2025-10）</h3><ul style="margin-top:8px">
+      <li>RAISE 虚拟研究院试点 1.07 亿欧元</li>
+      <li>2025 年工作计划新增 16 亿欧元；承诺 2028 年前 AI 科研投入翻倍</li></ul></div>
+    <div class="panel"><div class="eyebrow">英国</div><h3>AI for Science Strategy（2025-11）</h3><ul style="margin-top:8px">
+      <li>15 项行动，最高 1.37 亿英镑，首要聚焦药物发现</li>
+      <li>UKRI 2026–2030 年 AI 投入 16 亿英镑；主权 AI 基金参投 Isomorphic</li></ul></div>
+  </div>
+  <p class="muted" style="font-size:14px">本轮检索未找到科技部层面 2026 年全国性的"人工智能+科学技术"专项实施方案，请以科技部官网为准。</p>
+</div></section>
+
+<section id="business"><div class="wrap">
+  <div class="head"><div class="eyebrow">08 · 商业模式</div><h2>服务化最先盈利，管线价值最大</h2></div>
+  <div class="tbl"><table>
+    <thead><tr><th>模式</th><th>代表</th><th>收入特征</th><th>优势</th><th>挑战</th></tr></thead>
+    <tbody>
+      <tr><td>软件/SaaS</td><td>Schrödinger、玻尔、BioNeMo、Microsoft Discovery</td><td>经常性收入</td><td>现金流稳、毛利高</td><td>受药企 IT 预算限制；开源模型带来价格压力</td></tr>
+      <tr><td>合作 + 里程碑</td><td>Isomorphic、英矽、Chai、百图</td><td>首付 + 里程碑 + 特许权</td><td>头条金额大</td><td>现金集中在首付，里程碑高度不确定</td></tr>
+      <tr><td>自研管线</td><td>英矽、Recursion、Xaira、Generate</td><td>授权或上市后才有大额收入</td><td>价值捕获最大</td><td>烧钱多、周期长</td></tr>
+      <tr><td>CRO/服务化</td><td>晶泰（药物发现方案收入约 5.38 亿元，+419%）</td><td>按项目收费</td><td>现金快，已实现盈利</td><td>毛利与估值倍数低，同质化</td></tr>
+      <tr><td>政府/机构合同</td><td>气象、国家实验室、Genesis</td><td>政府采购</td><td>规模大、稳定</td><td>回款慢、难复制</td></tr>
+    </tbody>
+  </table></div>
+  <div class="grid g3">
+    <div class="panel"><div class="big">~1%</div><p class="muted">临床在研药物中由 AI 发现的占比（约 67 / 6,147）<span class="tag">二手</span></p></div>
+    <div class="panel"><div class="big">~40%</div><p class="muted">AI 发现分子的 II 期成功率，与历史水平相当 <span class="tag">二手</span></p></div>
+    <div class="panel"><div class="big" style="color:var(--rust)">0</div><p class="muted">完全由 AI 发现并获批上市的新药</p></div>
+  </div>
+</div></section>
+
+<section id="risk"><div class="wrap">
+  <div class="head"><div class="eyebrow">09 · 驱动与风险</div><h2>数据与湿实验是最大瓶颈</h2></div>
+  <div class="grid g2">
+    <div class="panel"><h3>驱动因素</h3><ul style="margin-top:8px">
+      <li>推理型 LLM 与科学多模态大模型能力跃升；AlphaFold 与诺奖带来范式认可</li>
+      <li>算力成本下降，NVIDIA 等厂商主动布局科学场景</li>
+      <li>专利悬崖与研发回报率下降，推动药企大额 BD</li>
+      <li>Genesis、"人工智能+"、RAISE、英国战略等国家投入</li>
+      <li>资本把科学视为通往"科学超级智能"的路径</li></ul></div>
+    <div class="tbl"><table>
+      <thead><tr><th>严重度</th><th>风险</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td><span class="sev h">高</span></td><td>数据稀缺与质量</td><td>实验数据少、阴性结果缺失、跨实验室不一致</td></tr>
+        <tr><td><span class="sev h">高</span></td><td>实验验证瓶颈</td><td>干实验快、湿实验慢；GNoME 可合成性曾受质疑</td></tr>
+        <tr><td><span class="sev mh">中高</span></td><td>可解释与复现</td><td>黑箱难入监管决策；厂商自报基准缺乏独立验证</td></tr>
+        <tr><td><span class="sev mh">中高</span></td><td>估值泡沫</td><td>2026 年头部估值跃升，临床失败可能引发重估</td></tr>
+        <tr><td><span class="sev mh">中高</span></td><td>算力获取</td><td>前沿训练成本高；中国受出口管制</td></tr>
+        <tr><td><span class="sev m">中</span></td><td>监管</td><td>FDA/NMPA AI 证据规则演进；数据跨境限制</td></tr>
+        <tr><td><span class="sev m">中</span></td><td>地缘政治</td><td>中美科学数据与模型生态可能分化</td></tr>
+        <tr><td><span class="sev m">中</span></td><td>生物安全</td><td>生物设计模型存在双重用途风险</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div></section>
+
+<section id="outlook"><div class="wrap">
+  <div class="head"><div class="eyebrow">10 · 展望与建议</div><h2>2026–2030 趋势与战略建议</h2></div>
+  <div class="grid g3">
+    <div class="panel"><h3>从模型到闭环</h3><p class="muted">竞争焦点转向"智能体 + 自主实验室 + 专有数据飞轮"。</p></div>
+    <div class="panel"><h3>开源与闭源分化</h3><p class="muted">美国以闭源前沿模型和 Genesis 平台为主；中国以开源科学大模型和国家队平台为主。</p></div>
+    <div class="panel"><h3>AI 制药临床兑现期</h3><p class="muted">rentosertib III 期、Isomorphic 首个临床、REC-4881 注册路径检验真实价值。</p></div>
+    <div class="panel"><h3>AI 气象全面业务化</h3><p class="muted">向次季节/气候、能源调度和保险延伸。</p></div>
+    <div class="panel"><h3>材料与能源第二曲线</h3><p class="muted">电池、超导、半导体材料和核聚变的 AI 投资加速。</p></div>
+    <div class="panel"><h3>资本集中与整合</h3><p class="muted">巨头与国家资本主导，中小工具型公司面临整合。</p></div>
+  </div>
+  <div class="panel dark">
+    <h3>投资与战略建议</h3>
+    <div class="grid g2" style="margin-top:14px">
+      <p><b>1 · 押注闭环能力。</b><span class="muted">看实验通量、数据独占性和迭代速度，而非单纯模型层。</span></p>
+      <p><b>2 · 看现金不看头条。</b><span class="muted">用首付与现金收入评估 AI 制药公司，重视 II 期以上数据。</span></p>
+      <p><b>3 · 把握临床催化剂。</b><span class="muted">2026–27 年 rentosertib、Isomorphic、Generate GB-0895 读出前做好对冲。</span></p>
+      <p><b>4 · 出海 BD + 港股上市。</b><span class="muted">英矽、晶泰已验证；深势、百图可借政策与国资开拓海外药企。</span></p>
+      <p><b>5 · 关注材料与能源。</b><span class="muted">电池、半导体材料、催化方向的 AI + 自动化实验平台相对低估。</span></p>
+      <p><b>6 · 切入政府采购。</b><span class="muted">参与 Genesis、RAISE、国内科学数据库与智能化科研平台建设。</span></p>
+      <p><b>7 · 警惕估值过热。</b><span class="muted">要求独立基准与前瞻性实验验证，控制高估值轮次仓位。</span></p>
+      <p><b>8 · 合规前置。</b><span class="muted">提前设计数据跨境、生物安全和模型可解释性治理。</span></p>
+    </div>
+    <p class="muted" style="margin-top:14px;font-size:13px">以上为研究判断，不构成投资建议。</p>
+  </div>
+</div></section>
+
+<section id="sources"><div class="wrap">
+  <div class="head"><div class="eyebrow">附录</div><h2>数据可信度与来源</h2></div>
+  <div class="panel"><ul>
+    <li>市场规模数字均来自商业研究机构的公开摘要，方法论不透明，机构间差异可达 3–10 倍；标"估计"的数字为本报告外推。</li>
+    <li>晶泰 2025 年收入与利润来自媒体转述；Periodic Labs 估值、Lila 85 亿美元估值、Isomorphic 400 亿美元估值均为洽谈中的报道。</li>
+    <li>AI 药物发现 VC 总额与 Genesis"50 亿美元 / 278 个项目"只有单一二手来源。</li>
+    <li>中国 AI4S 专项规模只有共研 47 亿元一个口径，可信度有限。</li>
+  </ul></div>
+  <div>
+    <details><summary>市场规模</summary><ul>
+      <li><a href="https://www.hpcwire.com/aiwire/2026/06/24/hyperion-research-slices-and-dices-the-hpc-ai-market/">Hyperion Research via HPCwire（2026-06-24）</a></li>
+      <li><a href="https://www.precedenceresearch.com/ai-for-scientific-discovery-market">Precedence Research · AI for Scientific Discovery</a></li>
+      <li><a href="https://market.us/report/ai-for-scientific-discovery-market/">Market.us · AI for Scientific Discovery</a></li>
+      <li><a href="https://www.technavio.com/report/ai-for-scientific-discovery-market-industry-analysis">Technavio · AI for Scientific Discovery</a></li>
+      <li><a href="https://marketintelo.com/report/ai-in-scientific-research-market/amp">Marketintelo · AI in Scientific Research</a></li>
+      <li><a href="https://arizton.com/market-reports/ai-in-drug-discovery-market">Arizton · AI in Drug Discovery</a></li>
+      <li><a href="https://www.businesswire.com/news/home/20250509495976/en/">ResearchAndMarkets via BusinessWire（2025-05-09）</a></li>
+      <li><a href="https://www.webull.com/news/15271438694376448">MarketsandMarkets AI in Drug Discovery（2026）</a></li>
+      <li><a href="https://www.biospace.com/press-releases/artificial-intelligence-ai-in-drug-discovery-market-size-expected-to-reach-usd-16-52-billion-by-2034">Precedence AI in Drug Discovery via BioSpace</a></li>
+      <li><a href="https://www.biospace.com/ai-in-drug-discovery-market-size-to-hit-usd-10-80-billion-by-2030">BioSpace（USD 10.80B by 2030）</a></li>
+      <li><a href="https://www.globenewswire.com/news-release/2026/07/09/3324587/0/en/">GlobeNewswire · GenAI in Material Science（2026-07-09）</a></li>
+      <li><a href="https://www.bilibili.com/read/cv38650956">共研产业研究院（转载）</a></li>
+      <li><a href="https://www.cls.cn/detail/2184144">头豹研究院（财联社）</a></li>
+      <li><a href="https://www.chinabaogao.com/baogao/202507/758114.html">观研天下</a></li>
+      <li><a href="https://www.marketsandmarkets.com/Market-Reports/geography/ai-in-life-science-market/China">MarketsandMarkets · China AI in Life Science</a></li>
+      <li><a href="https://www.mckinsey.com/industries/life-sciences/our-insights/generative-ai-in-the-pharmaceutical-industry-moving-from-hype-to-reality">McKinsey · Generative AI in pharma</a></li>
+    </ul></details>
+    <details><summary>公司与投融资</summary><ul>
+      <li><a href="https://www.mobihealthnews.com/news/google-backed-isomorphic-labs-raises-21b-ai-drug-discovery-platform">Isomorphic Labs B 轮</a> · <a href="https://runtimewire.com/article/isomorphic-labs-40-billion-valuation-funding-talks">400 亿美元估值洽谈</a> · <a href="https://www.isomorphiclabs.com/partnerships">合作伙伴</a></li>
+      <li><a href="https://finance.yahoo.com/news/exclusive-ai-lab-lila-sciences-101645837.html">Lila Sciences（Reuters）</a> · <a href="https://news.bloombergtax.com/financial-accounting/lila-sciences-said-in-talks-for-funds-at-8-5-billion-valuation">85 亿美元估值（Bloomberg）</a></li>
+      <li><a href="https://www.maginative.com/article/periodic-labs-launches-with-300m-to-build-an-ai-scientist/">Periodic Labs</a></li>
+      <li><a href="https://www.drugdiscoverytrends.com/xaira-therapeutics-billion-dollar-ai-biotech-funding/">Xaira</a> · <a href="https://www.chaidiscovery.com/news/series-c">Chai Discovery C 轮</a> · <a href="https://news.bgov.com/capital-markets/flagship-backed-generate-biomedicines-raises-400-million-in-ipo">Generate IPO</a></li>
+      <li><a href="https://ir.recursion.com/news-releases/news-release-details/recursion-reports-fourth-quarter-and-full-year-2025-financial">Recursion 2025 财报</a> · <a href="https://www.businesswire.com/news/home/20260225969788/en/">Schrödinger 2025 财报</a></li>
+      <li><a href="https://www.fiercebiotech.com/biotech/lilly-nvidia-tag-partnership-new-ai-co-innovation-lab-1b-investment">NVIDIA–礼来实验室</a> · <a href="https://pharmaphorum.com/news/lilly-puts-275bn-insilico-alliance">礼来–英矽</a></li>
+      <li><a href="https://www.36kr.com/p/3600333723058178">英矽智能 IPO</a> · <a href="https://stock.10jqka.com.cn/20260917/c679998858.shtml">rentosertib III 期</a></li>
+      <li><a href="https://www.scmp.com/business/companies/article/3337648/ai-science-start-dp-technology-raises-us114-million-series-c-round">深势科技 C 轮（SCMP）</a> · <a href="https://www.itiger.com/news/1173204622">晶泰科技</a> · <a href="https://www.guancha.cn/GongSi/2026_03_27_811620.shtml">百图生科</a></li>
+      <li><a href="https://intuitionlabs.ai/pdfs/ai-adoption-in-pharma-biotech-2026-industry-benchmarks.pdf">IntuitionLabs · AI 药物 VC（二手）</a></li>
+    </ul></details>
+    <details><summary>技术里程碑</summary><ul>
+      <li><a href="https://www.nobelprize.org/prizes/chemistry/2024/summary/">2024 诺贝尔化学奖</a></li>
+      <li><a href="https://www.nature.com/articles/s41586-021-03819-2">AlphaFold 2</a> · <a href="https://www.nature.com/articles/s41586-024-07487-w">AlphaFold 3</a> · <a href="https://www.nature.com/articles/s41586-023-06735-9">GNoME</a> · <a href="https://www.science.org/doi/10.1126/science.adi2336">GraphCast</a> · <a href="https://www.nature.com/articles/s41586-024-08252-9">GenCast</a> · <a href="https://www.nature.com/articles/s41586-023-06185-3">盘古气象</a></li>
+      <li><a href="https://www.ecmwf.int/en/about/media-centre/news/2025/ecmwfs-ensemble-ai-forecasts-become-operational">ECMWF AIFS 业务化</a> · <a href="https://www.ecmwf.int/en/newsletter/187/news/implementation-aifs-v2">AIFS v2</a></li>
+      <li><a href="https://news.microsoft.com/source/features/ai/2-ai-breakthroughs-unlock-new-potential-for-health-and-science/">MatterGen / Aurora</a> · <a href="https://www.stateof.ai/predictions/ai-agents-scientific-discovery">State of AI</a></li>
+      <li><a href="https://deepmind.google/blog/strengthening-our-partnership-with-the-uk-government-to-support-prosperity-and-security-in-the-ai-era/">DeepMind 英国自动化实验室</a></li>
+      <li><a href="https://www.aibase.com/zh/news/20050">书生 Intern-S1</a> · <a href="https://www.news.cn/tech/20251219/99223b9d028a46faa3dda987a5f607b9/c.html">中国气象局风系列</a></li>
+    </ul></details>
+    <details><summary>政策</summary><ul>
+      <li><a href="https://www.gov.cn/yaowen/liebiao/202508/content_7037868.htm">国务院"人工智能+"行动意见</a></li>
+      <li><a href="https://www.cs.com.cn/5g/202303/t20230328_6332474.html">科技部 AI for Science 专项（2023）</a></li>
+      <li><a href="https://www.bjnews.com.cn/detail/1752224571129051.html">北京 2025–2027 行动计划</a> · <a href="https://www.bjnews.com.cn/detail/1783014152189464.html">北京 2026–2028 实施方案</a></li>
+      <li><a href="https://public-inspection.federalregister.gov/2025-21665.pdf">Genesis Mission EO 14363</a> · <a href="https://www.energy.gov/undersecretaryforscience/articles/us-department-energy-announces-more-800-million-partner">DOE 8 亿美元伙伴承诺</a> · <a href="https://www.energy.gov/articles/energy-department-announces-293-million-funding-support-genesis-mission-national-science">DOE 2.93 亿美元 RFA</a> · <a href="https://fedscoop.com/doe-japan-genesis-mission-partnership-national-labs/">美日合作</a></li>
+      <li><a href="https://research-and-innovation.ec.europa.eu/strategy/strategy-research-and-innovation/our-digital-future/european-ai-science-strategy_en">EU AI in Science Strategy / RAISE</a></li>
+      <li><a href="https://www.gov.uk/government/news/bold-bet-on-ai-to-keep-uk-at-forefront-of-science-and-research-breakthroughs-from-healthcare-to-better-public-services">UK AI for Science Strategy</a></li>
+    </ul></details>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">AI for Science 行业研究 · 2026-10-10 · 基于公开资料整理，数字以原始来源为准。</div></footer>
+</body>
+</html>
